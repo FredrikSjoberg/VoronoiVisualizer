@@ -14,6 +14,10 @@
 		76D50AAB1C726A1A00DBB660 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D50AA91C726A1A00DBB660 /* Main.storyboard */; };
 		76D50AAD1C726A1A00DBB660 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D50AAC1C726A1A00DBB660 /* Assets.xcassets */; };
 		76D50AB01C726A1A00DBB660 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D50AAE1C726A1A00DBB660 /* LaunchScreen.storyboard */; };
+		76D50AB81C726A5F00DBB660 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 76D50AB71C726A5F00DBB660 /* Cartfile */; };
+		76D50ABA1C726B5700DBB660 /* Descartes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D50AB91C726B5700DBB660 /* Descartes.framework */; };
+		76D50ABD1C726C9800DBB660 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50ABC1C726C9800DBB660 /* CGPoint+Extensions.swift */; };
+		76D50ABF1C726CBA00DBB660 /* GKRandom+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50ABE1C726CBA00DBB660 /* GKRandom+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		76D50AAC1C726A1A00DBB660 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76D50AAF1C726A1A00DBB660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76D50AB11C726A1A00DBB660 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76D50AB71C726A5F00DBB660 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
+		76D50AB91C726B5700DBB660 /* Descartes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Descartes.framework; path = Carthage/Build/iOS/Descartes.framework; sourceTree = "<group>"; };
+		76D50ABC1C726C9800DBB660 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		76D50ABE1C726CBA00DBB660 /* GKRandom+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GKRandom+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D50ABA1C726B5700DBB660 /* Descartes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,7 @@
 		76D50A951C726A1A00DBB660 = {
 			isa = PBXGroup;
 			children = (
+				76D50AB91C726B5700DBB660 /* Descartes.framework */,
 				76D50AA01C726A1A00DBB660 /* VoronoiVisualizer */,
 				76D50A9F1C726A1A00DBB660 /* Products */,
 			);
@@ -65,7 +75,10 @@
 				76D50AA91C726A1A00DBB660 /* Main.storyboard */,
 				76D50AAC1C726A1A00DBB660 /* Assets.xcassets */,
 				76D50AAE1C726A1A00DBB660 /* LaunchScreen.storyboard */,
+				76D50AB71C726A5F00DBB660 /* Cartfile */,
 				76D50AB11C726A1A00DBB660 /* Info.plist */,
+				76D50ABC1C726C9800DBB660 /* CGPoint+Extensions.swift */,
+				76D50ABE1C726CBA00DBB660 /* GKRandom+Extensions.swift */,
 			);
 			path = VoronoiVisualizer;
 			sourceTree = "<group>";
@@ -80,6 +93,7 @@
 				76D50A9A1C726A1A00DBB660 /* Sources */,
 				76D50A9B1C726A1A00DBB660 /* Frameworks */,
 				76D50A9C1C726A1A00DBB660 /* Resources */,
+				76D50ABB1C726B6700DBB660 /* -copyframeworks */,
 			);
 			buildRules = (
 			);
@@ -128,6 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D50AB81C726A5F00DBB660 /* Cartfile in Resources */,
 				76D50AA41C726A1A00DBB660 /* GameScene.sks in Resources */,
 				76D50AB01C726A1A00DBB660 /* LaunchScreen.storyboard in Resources */,
 				76D50AAD1C726A1A00DBB660 /* Assets.xcassets in Resources */,
@@ -137,6 +152,24 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		76D50ABB1C726B6700DBB660 /* -copyframeworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Descartes.framework",
+			);
+			name = "-copyframeworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		76D50A9A1C726A1A00DBB660 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -144,6 +177,8 @@
 			files = (
 				76D50AA61C726A1A00DBB660 /* GameScene.swift in Sources */,
 				76D50AA81C726A1A00DBB660 /* GameViewController.swift in Sources */,
+				76D50ABF1C726CBA00DBB660 /* GKRandom+Extensions.swift in Sources */,
+				76D50ABD1C726C9800DBB660 /* CGPoint+Extensions.swift in Sources */,
 				76D50AA21C726A1A00DBB660 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +292,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = VoronoiVisualizer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.FredrikSjoberg.VoronoiVisualizer;
@@ -268,6 +307,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = VoronoiVisualizer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.FredrikSjoberg.VoronoiVisualizer;
