@@ -53,7 +53,6 @@ class GameViewController: UIViewController {
         // Generate random points
         let interval = ClosedInterval(Standard.pointIndentation, Float(sideSize)-Standard.pointIndentation)
         let randomPoints = (0..<numPoints).map{ _ in return CGPoint(random: random, interval: interval) }
-        //        let randomPoints = [CGPoint(x: 100, y: 50), CGPoint(x: 80, y: 60), CGPoint(x: 120, y: 70), CGPoint(x: 110, y: 130)]
         
         // Improve the random points
         let bounds = CGRect(x: 0, y: 0, width: sideSize, height: sideSize)
@@ -93,7 +92,6 @@ class GameViewController: UIViewController {
         catch {
             print(error)
         }
-        print("done")
     }
 
     override func shouldAutorotate() -> Bool {
