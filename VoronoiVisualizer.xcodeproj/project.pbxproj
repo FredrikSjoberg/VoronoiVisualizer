@@ -18,6 +18,8 @@
 		76D50ABA1C726B5700DBB660 /* Descartes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D50AB91C726B5700DBB660 /* Descartes.framework */; };
 		76D50ABD1C726C9800DBB660 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50ABC1C726C9800DBB660 /* CGPoint+Extensions.swift */; };
 		76D50ABF1C726CBA00DBB660 /* GKRandom+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50ABE1C726CBA00DBB660 /* GKRandom+Extensions.swift */; };
+		76D50AC21C726F7D00DBB660 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 76D50AC01C726F7D00DBB660 /* LICENSE */; };
+		76D50AC31C726F7D00DBB660 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AC11C726F7D00DBB660 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		76D50AB91C726B5700DBB660 /* Descartes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Descartes.framework; path = Carthage/Build/iOS/Descartes.framework; sourceTree = "<group>"; };
 		76D50ABC1C726C9800DBB660 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		76D50ABE1C726CBA00DBB660 /* GKRandom+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GKRandom+Extensions.swift"; sourceTree = "<group>"; };
+		76D50AC01C726F7D00DBB660 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		76D50AC11C726F7D00DBB660 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 				76D50AB11C726A1A00DBB660 /* Info.plist */,
 				76D50ABC1C726C9800DBB660 /* CGPoint+Extensions.swift */,
 				76D50ABE1C726CBA00DBB660 /* GKRandom+Extensions.swift */,
+				76D50AC01C726F7D00DBB660 /* LICENSE */,
+				76D50AC11C726F7D00DBB660 /* README.md */,
 			);
 			path = VoronoiVisualizer;
 			sourceTree = "<group>";
@@ -142,6 +148,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D50AC21C726F7D00DBB660 /* LICENSE in Resources */,
 				76D50AB81C726A5F00DBB660 /* Cartfile in Resources */,
 				76D50AA41C726A1A00DBB660 /* GameScene.sks in Resources */,
 				76D50AB01C726A1A00DBB660 /* LaunchScreen.storyboard in Resources */,
@@ -175,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D50AC31C726F7D00DBB660 /* README.md in Sources */,
 				76D50AA61C726A1A00DBB660 /* GameScene.swift in Sources */,
 				76D50AA81C726A1A00DBB660 /* GameViewController.swift in Sources */,
 				76D50ABF1C726CBA00DBB660 /* GKRandom+Extensions.swift in Sources */,
