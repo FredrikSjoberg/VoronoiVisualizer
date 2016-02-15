@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		76D50AA21C726A1A00DBB660 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AA11C726A1A00DBB660 /* AppDelegate.swift */; };
-		76D50AA41C726A1A00DBB660 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76D50AA31C726A1A00DBB660 /* GameScene.sks */; };
 		76D50AA61C726A1A00DBB660 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AA51C726A1A00DBB660 /* GameScene.swift */; };
 		76D50AA81C726A1A00DBB660 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AA71C726A1A00DBB660 /* GameViewController.swift */; };
 		76D50AAB1C726A1A00DBB660 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D50AA91C726A1A00DBB660 /* Main.storyboard */; };
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		76D50A9E1C726A1A00DBB660 /* VoronoiVisualizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoronoiVisualizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D50AA11C726A1A00DBB660 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		76D50AA31C726A1A00DBB660 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		76D50AA51C726A1A00DBB660 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		76D50AA71C726A1A00DBB660 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		76D50AAA1C726A1A00DBB660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				76D50AA11C726A1A00DBB660 /* AppDelegate.swift */,
-				76D50AA31C726A1A00DBB660 /* GameScene.sks */,
 				76D50AA51C726A1A00DBB660 /* GameScene.swift */,
 				76D50AA71C726A1A00DBB660 /* GameViewController.swift */,
 				76D50AA91C726A1A00DBB660 /* Main.storyboard */,
@@ -150,7 +147,6 @@
 			files = (
 				76D50AC21C726F7D00DBB660 /* LICENSE in Resources */,
 				76D50AB81C726A5F00DBB660 /* Cartfile in Resources */,
-				76D50AA41C726A1A00DBB660 /* GameScene.sks in Resources */,
 				76D50AB01C726A1A00DBB660 /* LaunchScreen.storyboard in Resources */,
 				76D50AAD1C726A1A00DBB660 /* Assets.xcassets in Resources */,
 				76D50AAB1C726A1A00DBB660 /* Main.storyboard in Resources */,
@@ -345,6 +341,7 @@
 				76D50AB61C726A1A00DBB660 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

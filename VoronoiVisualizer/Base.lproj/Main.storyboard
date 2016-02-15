@@ -17,12 +17,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAK-XF-maf" customClass="SKView">
-                                <rect key="frame" x="20" y="20" width="200" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAK-XF-maf" customClass="SKView">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="gIf-Js-9dh"/>
+                                    <constraint firstAttribute="width" constant="200" id="gWJ-K4-dJu"/>
+                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vce-8N-Gxk">
+                                <rect key="frame" x="281" y="408" width="39" height="30"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="xl9-Qb-jgy"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or touch points (green) to remove them" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBs-5t-g69">
+                                <rect key="frame" x="150" y="171" width="300" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch the scene to add points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wch-q9-J1K">
+                                <rect key="frame" x="184" y="142" width="232" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <constraints>
+                            <constraint firstItem="wch-q9-J1K" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="8Ts-wt-pbx"/>
+                            <constraint firstItem="Vce-8N-Gxk" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="E9a-IR-dHa"/>
+                            <constraint firstItem="tAK-XF-maf" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" id="Inx-gX-ol8"/>
+                            <constraint firstItem="IBs-5t-g69" firstAttribute="top" secondItem="wch-q9-J1K" secondAttribute="bottom" constant="8" id="RYU-mU-5Kc"/>
+                            <constraint firstItem="tAK-XF-maf" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="Y9H-Qt-w6u"/>
+                            <constraint firstItem="Vce-8N-Gxk" firstAttribute="top" secondItem="tAK-XF-maf" secondAttribute="bottom" constant="8" id="lBe-bq-u5e"/>
+                            <constraint firstItem="tAK-XF-maf" firstAttribute="top" secondItem="IBs-5t-g69" secondAttribute="bottom" constant="8" id="lci-HW-NBH"/>
+                            <constraint firstItem="IBs-5t-g69" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="yzr-a4-WxK"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="skView" destination="tAK-XF-maf" id="HNZ-dr-ytW"/>
@@ -30,6 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="631" y="395"/>
         </scene>
     </scenes>
 </document>
