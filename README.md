@@ -3,7 +3,7 @@
 
 ###VoronoiVisualizer
 Requires Descartes to work.
-run carthage -update
+run carthage update
 
 ###Descartes
 =========
