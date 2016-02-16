@@ -15,7 +15,10 @@ class GameScene: SKScene {
     
     var siteNodes: SKNode!
     var edgeNodes: SKNode!
+    var boundsNodes: SKShapeNode!
     var needsEdgeUpdate: Bool = false
+    
+    var bounds: BoundaryType!
     
     override func didMoveToView(view: SKView) {
         let source = GKMersenneTwisterRandomSource(seed: 4)
@@ -24,8 +27,26 @@ class GameScene: SKScene {
         siteNodes = SKNode()
         edgeNodes = SKNode()
         
+        let bVerts = [CGPoint(x: 30, y: 30), CGPoint(x: 180, y: 40), CGPoint(x: 170, y: 150), CGPoint(x: 100, y: 180), CGPoint(x: 40, y: 160)]
+        let polygon = ConvexPolygon(vertices: bVerts)
+        bounds = polygon
+        
+        boundsNodes = SKShapeNode()
+        let path = CGPathCreateMutable()
+        polygon.edges.forEach{
+            CGPathMoveToPoint(path, nil, $0.p0.x, $0.p0.y)
+            CGPathAddLineToPoint(path, nil, $0.p1.x, $0.p1.y)
+        }
+        boundsNodes.strokeColor = UIColor.yellowColor()
+        boundsNodes.path = path
+        
+//        bounds = CGRect(x: 0, y: 0, width: sideSize, height: sideSize)
+        
+        
+        
         addChild(siteNodes)
         addChild(edgeNodes)
+        addChild(boundsNodes)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -34,19 +55,21 @@ class GameScene: SKScene {
         for touch in touches {
             let location = touch.locationInNode(self)
             
-            let existing = siteNodes.nodeAtPoint(location)
-            if existing != siteNodes {
-                // Remove old node
-                existing.removeFromParent()
-                
+            if bounds.contains(location) {
+                let existing = siteNodes.nodeAtPoint(location)
+                if existing != siteNodes {
+                    // Remove old node
+                    existing.removeFromParent()
+                    
+                }
+                else {
+                    let node = SKShapeNode(circleOfRadius: 2)
+                    node.position = location
+                    node.fillColor = UIColor.greenColor()
+                    siteNodes.addChild(node)
+                }
+                needsEdgeUpdate = true
             }
-            else {
-                let node = SKShapeNode(circleOfRadius: 2)
-                node.position = location
-                node.fillColor = UIColor.greenColor()
-                siteNodes.addChild(node)
-            }
-            needsEdgeUpdate = true
         }
     }
    
@@ -55,10 +78,10 @@ class GameScene: SKScene {
         if needsEdgeUpdate {
             edgeNodes.removeAllChildren()
             
-            let bounds = CGRect(x: 0, y: 0, width: sideSize, height: sideSize)
+            
             let points = siteNodes.children.map{ $0.position }
             
-            let voronoi = Voronoi(points: points, bounds: bounds)
+            let voronoi = Voronoi(points: points, boundary: bounds)
             
             let edges = voronoi.voronoiEdges
             edges.forEach{
