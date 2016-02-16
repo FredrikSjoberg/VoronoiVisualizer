@@ -80,7 +80,7 @@ class GameScene: SKScene {
             
             
             let points = siteNodes.children.map{ $0.position }
-            
+
             let voronoi = Voronoi(points: points, boundary: bounds)
             
             let edges = voronoi.voronoiEdges
