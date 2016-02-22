@@ -22,8 +22,8 @@ extension CGPoint {
     }
 }
 
-func + (left: CGPoint, right: CGPoint) -> CGPoint {
-    return CGPoint(x: left.x + right.x, y: left.y + right.y)
+internal func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+    return CGPoint(x: lhs.x+rhs.x, y: lhs.y+rhs.y)
 }
 
 func / (point: CGPoint, value: Float) -> CGPoint {

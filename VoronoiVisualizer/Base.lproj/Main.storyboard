@@ -25,39 +25,52 @@
                                     <constraint firstAttribute="width" constant="200" id="gWJ-K4-dJu"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Mode: highlight selected cell around point" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBs-5t-g69">
+                                <rect key="frame" x="169" y="177" width="263" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points Mode: Add or remove points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wch-q9-J1K">
+                                <rect key="frame" x="201" y="154" width="199" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OLC-Gm-oOU">
+                                <rect key="frame" x="295" y="408" width="105" height="29"/>
+                                <segments>
+                                    <segment title="Points"/>
+                                    <segment title="Cells"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectAction:" destination="BV1-FR-VrT" eventType="valueChanged" id="2dP-q4-bSV"/>
+                                </connections>
+                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vce-8N-Gxk">
-                                <rect key="frame" x="281" y="408" width="39" height="30"/>
+                                <rect key="frame" x="200" y="408" width="39" height="30"/>
                                 <state key="normal" title="Reset"/>
                                 <connections>
                                     <action selector="resetAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="xl9-Qb-jgy"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or touch points (green) to remove them" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBs-5t-g69">
-                                <rect key="frame" x="150" y="171" width="300" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch the scene to add points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wch-q9-J1K">
-                                <rect key="frame" x="184" y="142" width="232" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
                             <constraint firstItem="wch-q9-J1K" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="8Ts-wt-pbx"/>
-                            <constraint firstItem="Vce-8N-Gxk" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="E9a-IR-dHa"/>
+                            <constraint firstItem="OLC-Gm-oOU" firstAttribute="trailing" secondItem="tAK-XF-maf" secondAttribute="trailing" id="Drg-Wz-wxW"/>
                             <constraint firstItem="tAK-XF-maf" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" id="Inx-gX-ol8"/>
                             <constraint firstItem="IBs-5t-g69" firstAttribute="top" secondItem="wch-q9-J1K" secondAttribute="bottom" constant="8" id="RYU-mU-5Kc"/>
                             <constraint firstItem="tAK-XF-maf" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="Y9H-Qt-w6u"/>
                             <constraint firstItem="Vce-8N-Gxk" firstAttribute="top" secondItem="tAK-XF-maf" secondAttribute="bottom" constant="8" id="lBe-bq-u5e"/>
                             <constraint firstItem="tAK-XF-maf" firstAttribute="top" secondItem="IBs-5t-g69" secondAttribute="bottom" constant="8" id="lci-HW-NBH"/>
+                            <constraint firstItem="OLC-Gm-oOU" firstAttribute="top" secondItem="tAK-XF-maf" secondAttribute="bottom" constant="8" id="nRi-hu-5eg"/>
+                            <constraint firstItem="Vce-8N-Gxk" firstAttribute="leading" secondItem="tAK-XF-maf" secondAttribute="leading" id="oZ2-jU-tiJ"/>
                             <constraint firstItem="IBs-5t-g69" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="yzr-a4-WxK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="selectButton" destination="OLC-Gm-oOU" id="QG6-VR-7qB"/>
                         <outlet property="skView" destination="tAK-XF-maf" id="HNZ-dr-ytW"/>
                     </connections>
                 </viewController>

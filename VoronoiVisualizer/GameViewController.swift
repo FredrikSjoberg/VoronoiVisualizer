@@ -16,6 +16,18 @@ class GameViewController: UIViewController {
         scene.resetPoints()
     }
     
+    @IBOutlet weak var selectButton: UISegmentedControl!
+    
+    @IBAction func selectAction(sender: AnyObject) {
+        if selectButton.selectedSegmentIndex == 0 {
+            scene.setSelectMode(.Site)
+        }
+        
+        if selectButton.selectedSegmentIndex == 1 {
+            scene.setSelectMode(.Cell)
+        }
+    }
+    
     var scene: GameScene!
     
     override func viewDidLoad() {
