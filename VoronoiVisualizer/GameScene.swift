@@ -61,22 +61,22 @@ class GameScene: SKScene {
     
     private func setupTouches() {
         
-        let node = SKShapeNode(circleOfRadius: 2)
+        let node = SKShapeNode(circleOfRadius: 6)
         node.position = CGPoint(x: 60, y: 60)
         node.fillColor = UIColor.greenColor()
         siteNodes.addChild(node)
         
-        let node1 = SKShapeNode(circleOfRadius: 2)
+        let node1 = SKShapeNode(circleOfRadius: 6)
         node1.position = CGPoint(x: 130, y: 130)
         node1.fillColor = UIColor.greenColor()
         siteNodes.addChild(node1)
         
-        let node2 = SKShapeNode(circleOfRadius: 2)
+        let node2 = SKShapeNode(circleOfRadius: 6)
         node2.position = CGPoint(x: 100, y: 50)
         node2.fillColor = UIColor.greenColor()
         siteNodes.addChild(node2)
         
-        let node3 = SKShapeNode(circleOfRadius: 2)
+        let node3 = SKShapeNode(circleOfRadius: 6)
         node3.position = CGPoint(x: 80, y: 150)
         node3.fillColor = UIColor.greenColor()
         siteNodes.addChild(node3)
@@ -106,7 +106,7 @@ class GameScene: SKScene {
             existing.removeFromParent()
         }
         else {
-            let node = SKShapeNode(circleOfRadius: 2)
+            let node = SKShapeNode(circleOfRadius: 6)
             node.position = location
             node.fillColor = UIColor.greenColor()
             siteNodes.addChild(node)
@@ -157,10 +157,10 @@ class GameScene: SKScene {
                 node.path = path
                 edgeNodes.addChild(node)
                 
-                let vertex0 = SKShapeNode(circleOfRadius: 2)
+                let vertex0 = SKShapeNode(circleOfRadius: 3)
                 vertex0.position = $0.p0
                 vertex0.fillColor = UIColor.redColor()
-                let vertex1 = SKShapeNode(circleOfRadius: 2)
+                let vertex1 = SKShapeNode(circleOfRadius: 3)
                 vertex1.position = $0.p1
                 vertex1.fillColor = UIColor.redColor()
                 edgeNodes.addChild(vertex0)
