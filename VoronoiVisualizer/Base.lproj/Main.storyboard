@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
@@ -17,61 +17,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAK-XF-maf" customClass="SKView">
-                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAK-XF-maf" customClass="SKView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="gIf-Js-9dh"/>
-                                    <constraint firstAttribute="width" constant="200" id="gWJ-K4-dJu"/>
-                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Mode: highlight selected cell around point" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBs-5t-g69">
-                                <rect key="frame" x="169" y="177" width="263" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points Mode: Add or remove points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wch-q9-J1K">
-                                <rect key="frame" x="201" y="154" width="199" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OLC-Gm-oOU">
-                                <rect key="frame" x="295" y="408" width="105" height="29"/>
-                                <segments>
-                                    <segment title="Points"/>
-                                    <segment title="Cells"/>
-                                </segments>
-                                <connections>
-                                    <action selector="selectAction:" destination="BV1-FR-VrT" eventType="valueChanged" id="2dP-q4-bSV"/>
-                                </connections>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vce-8N-Gxk">
-                                <rect key="frame" x="200" y="408" width="39" height="30"/>
-                                <state key="normal" title="Reset"/>
-                                <connections>
-                                    <action selector="resetAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="xl9-Qb-jgy"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBX-31-ZIg">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="BbU-NW-MoA">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vce-8N-Gxk">
+                                            <rect key="frame" x="20" y="7" width="39" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Reset"/>
+                                            <connections>
+                                                <action selector="resetAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="xl9-Qb-jgy"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="Uof-eW-Hq9">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="OLC-Gm-oOU">
+                                            <rect key="frame" x="69" y="8" width="105" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Points"/>
+                                                <segment title="Cells"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="selectAction:" destination="BV1-FR-VrT" eventType="valueChanged" id="2dP-q4-bSV"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="ZGZ-Tv-za8">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="VRx-x3-pX3">
+                                            <rect key="frame" x="184" y="7" width="118" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="scaleSlider:" destination="BV1-FR-VrT" eventType="valueChanged" id="AtN-dZ-yeF"/>
+                                            </connections>
+                                        </slider>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
-                            <constraint firstItem="wch-q9-J1K" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="8Ts-wt-pbx"/>
-                            <constraint firstItem="OLC-Gm-oOU" firstAttribute="trailing" secondItem="tAK-XF-maf" secondAttribute="trailing" id="Drg-Wz-wxW"/>
-                            <constraint firstItem="tAK-XF-maf" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" id="Inx-gX-ol8"/>
-                            <constraint firstItem="IBs-5t-g69" firstAttribute="top" secondItem="wch-q9-J1K" secondAttribute="bottom" constant="8" id="RYU-mU-5Kc"/>
-                            <constraint firstItem="tAK-XF-maf" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="Y9H-Qt-w6u"/>
-                            <constraint firstItem="Vce-8N-Gxk" firstAttribute="top" secondItem="tAK-XF-maf" secondAttribute="bottom" constant="8" id="lBe-bq-u5e"/>
-                            <constraint firstItem="tAK-XF-maf" firstAttribute="top" secondItem="IBs-5t-g69" secondAttribute="bottom" constant="8" id="lci-HW-NBH"/>
-                            <constraint firstItem="OLC-Gm-oOU" firstAttribute="top" secondItem="tAK-XF-maf" secondAttribute="bottom" constant="8" id="nRi-hu-5eg"/>
-                            <constraint firstItem="Vce-8N-Gxk" firstAttribute="leading" secondItem="tAK-XF-maf" secondAttribute="leading" id="oZ2-jU-tiJ"/>
-                            <constraint firstItem="IBs-5t-g69" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="yzr-a4-WxK"/>
+                            <constraint firstAttribute="trailing" secondItem="ZBX-31-ZIg" secondAttribute="trailing" id="0nr-7u-ZJy"/>
+                            <constraint firstAttribute="trailing" secondItem="tAK-XF-maf" secondAttribute="trailing" id="7Uw-aM-Dl5"/>
+                            <constraint firstItem="ZBX-31-ZIg" firstAttribute="top" secondItem="tAK-XF-maf" secondAttribute="bottom" id="BVd-cC-Cow"/>
+                            <constraint firstItem="tAK-XF-maf" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" id="E8U-93-nN1"/>
+                            <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="ZBX-31-ZIg" secondAttribute="bottom" id="UB4-aD-Cun"/>
+                            <constraint firstItem="tAK-XF-maf" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="nNh-MP-YJK"/>
+                            <constraint firstItem="ZBX-31-ZIg" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" id="sRj-fX-3l6"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="selectButton" destination="OLC-Gm-oOU" id="QG6-VR-7qB"/>
                         <outlet property="skView" destination="tAK-XF-maf" id="HNZ-dr-ytW"/>
+                        <outlet property="slider" destination="VRx-x3-pX3" id="24p-Qz-cm6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

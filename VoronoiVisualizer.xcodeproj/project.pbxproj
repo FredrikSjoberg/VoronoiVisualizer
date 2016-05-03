@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		76946E741C7BB0B800984EC4 /* Descartes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76946E731C7BB0B800984EC4 /* Descartes.framework */; };
+		769B51F31CD931B500C2198C /* GridProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769B51F21CD931B500C2198C /* GridProducer.swift */; };
 		76D50AA21C726A1A00DBB660 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AA11C726A1A00DBB660 /* AppDelegate.swift */; };
 		76D50AA61C726A1A00DBB660 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AA51C726A1A00DBB660 /* GameScene.swift */; };
 		76D50AA81C726A1A00DBB660 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AA71C726A1A00DBB660 /* GameViewController.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		76946E731C7BB0B800984EC4 /* Descartes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Descartes.framework; path = Carthage/Build/iOS/Descartes.framework; sourceTree = "<group>"; };
+		769B51F21CD931B500C2198C /* GridProducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridProducer.swift; sourceTree = "<group>"; };
 		76D50A9E1C726A1A00DBB660 /* VoronoiVisualizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoronoiVisualizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D50AA11C726A1A00DBB660 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D50AA51C726A1A00DBB660 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			children = (
 				76D50AA11C726A1A00DBB660 /* AppDelegate.swift */,
 				76D50AA51C726A1A00DBB660 /* GameScene.swift */,
+				769B51F21CD931B500C2198C /* GridProducer.swift */,
 				76D50AA71C726A1A00DBB660 /* GameViewController.swift */,
 				76D50AA91C726A1A00DBB660 /* Main.storyboard */,
 				76D50AAC1C726A1A00DBB660 /* Assets.xcassets */,
@@ -182,6 +185,7 @@
 				76D50AA61C726A1A00DBB660 /* GameScene.swift in Sources */,
 				76D50AA81C726A1A00DBB660 /* GameViewController.swift in Sources */,
 				76D50ABF1C726CBA00DBB660 /* GKRandom+Extensions.swift in Sources */,
+				769B51F31CD931B500C2198C /* GridProducer.swift in Sources */,
 				76D50ABD1C726C9800DBB660 /* CGPoint+Extensions.swift in Sources */,
 				76D50AA21C726A1A00DBB660 /* AppDelegate.swift in Sources */,
 			);
@@ -301,6 +305,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = VoronoiVisualizer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.FredrikSjoberg.VoronoiVisualizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -316,6 +321,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = VoronoiVisualizer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.FredrikSjoberg.VoronoiVisualizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";

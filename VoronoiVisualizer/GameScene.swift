@@ -19,6 +19,20 @@ class GameScene: SKScene {
     var highlightNodes: SKNode!
     var needsEdgeUpdate: Bool = false
     
+    var subdivisionNodes: SKNode!
+    var grid: Grid!
+    var boundsFrame: CGRect!
+    var minScale: Int = 20
+    func updateMinScale(scale: Float) {
+        let val = Int(scale*20)+10
+        minScale = val
+        
+        let points = siteNodes.children.map{ $0.position }
+        let voronoi = Voronoi(points: points, boundary: bounds)
+        let edges = voronoi.voronoiEdges
+        updateGrid(edges)
+    }
+    
     private var selectMode: SelectMode = .Site
     
     enum SelectMode {
@@ -28,15 +42,71 @@ class GameScene: SKScene {
     
     var bounds: BoundaryType!
     
+    let siteRadius: CGFloat = 10
     override func didMoveToView(view: SKView) {
         let source = GKMersenneTwisterRandomSource(seed: 4)
         random = GKRandomDistribution(randomSource: source, lowestValue: 1, highestValue: 100)
         
+        
         siteNodes = SKNode()
         edgeNodes = SKNode()
         highlightNodes = SKNode()
+        subdivisionNodes = SKNode()
         
-        let bVerts = [CGPoint(x: 30, y: 30), CGPoint(x: 180, y: 40), CGPoint(x: 170, y: 150), CGPoint(x: 100, y: 180), CGPoint(x: 40, y: 160)]
+        
+        
+        setupBoundsRect(view)
+        
+        setupTouches()
+        
+        addChild(subdivisionNodes)
+        addChild(siteNodes)
+        addChild(edgeNodes)
+        addChild(boundsNodes)
+        addChild(highlightNodes)
+    }
+    
+    func setupBoundsRect(view: SKView) {
+        let polygon = ConvexPolygon(rect: view.frame)
+        bounds = polygon
+        boundsNodes = SKShapeNode()
+        let path = CGPathCreateMutable()
+        polygon.edges.forEach{
+            CGPathMoveToPoint(path, nil, $0.p0.x, $0.p0.y)
+            CGPathAddLineToPoint(path, nil, $0.p1.x, $0.p1.y)
+        }
+        boundsNodes.strokeColor = UIColor.redColor()
+        boundsNodes.path = path
+        
+        subdivide(view.frame)
+    }
+    
+    func subdivide(bounds: CGRect) {
+        grid = Grid(bounds: bounds, count: 10)
+        boundsFrame = bounds
+//        subdivisionNodes = SKNode()
+//        grid.array.forEach{
+//            $0.forEach{
+//                let node = SKShapeNode()
+//                let polygon = ConvexPolygon(rect: $0)
+//                let path = CGPathCreateMutable()
+//                polygon.edges.forEach{
+//                    CGPathMoveToPoint(path, nil, $0.p0.x, $0.p0.y)
+//                    CGPathAddLineToPoint(path, nil, $0.p1.x, $0.p1.y)
+//                }
+//                node.strokeColor = UIColor.cyanColor()
+//                node.path = path
+//                subdivisionNodes.addChild(node)
+//            }
+//        }
+    }
+    
+    func setupBoundsPolygon() {
+        let bVerts = [CGPoint(x: 30, y: 30),
+                      CGPoint(x: frame.origin.x+frame.size.width-20, y: 40),
+                      CGPoint(x: frame.origin.x+frame.size.width-30, y: frame.origin.y+frame.size.height-70),
+                      CGPoint(x: (frame.origin.x+frame.size.width)/2, y: frame.origin.y+frame.size.height-40),
+                      CGPoint(x: 40, y: frame.origin.y+frame.size.height-30)]
         let polygon = ConvexPolygon(vertices: bVerts)
         bounds = polygon
         
@@ -46,38 +116,29 @@ class GameScene: SKScene {
             CGPathMoveToPoint(path, nil, $0.p0.x, $0.p0.y)
             CGPathAddLineToPoint(path, nil, $0.p1.x, $0.p1.y)
         }
-        boundsNodes.strokeColor = UIColor.yellowColor()
+        boundsNodes.strokeColor = UIColor.redColor()
         boundsNodes.path = path
-        
-//        bounds = CGRect(x: 0, y: 0, width: sideSize, height: sideSize)
-        
-        setupTouches()
-        
-        addChild(siteNodes)
-        addChild(edgeNodes)
-        addChild(boundsNodes)
-        addChild(highlightNodes)
     }
     
     private func setupTouches() {
         
-        let node = SKShapeNode(circleOfRadius: 6)
+        let node = SKShapeNode(circleOfRadius: siteRadius)
         node.position = CGPoint(x: 60, y: 60)
         node.fillColor = UIColor.greenColor()
         siteNodes.addChild(node)
         
-        let node1 = SKShapeNode(circleOfRadius: 6)
-        node1.position = CGPoint(x: 130, y: 130)
+        let node1 = SKShapeNode(circleOfRadius: siteRadius)
+        node1.position = CGPoint(x: frame.origin.x+frame.size.width-70, y: frame.origin.y+frame.size.height-270)
         node1.fillColor = UIColor.greenColor()
         siteNodes.addChild(node1)
         
-        let node2 = SKShapeNode(circleOfRadius: 6)
-        node2.position = CGPoint(x: 100, y: 50)
+        let node2 = SKShapeNode(circleOfRadius: siteRadius)
+        node2.position = CGPoint(x: (frame.origin.x+frame.size.width)/2, y: 50)
         node2.fillColor = UIColor.greenColor()
         siteNodes.addChild(node2)
         
-        let node3 = SKShapeNode(circleOfRadius: 6)
-        node3.position = CGPoint(x: 80, y: 150)
+        let node3 = SKShapeNode(circleOfRadius: siteRadius)
+        node3.position = CGPoint(x: 80, y: frame.origin.y+frame.size.height-250)
         node3.fillColor = UIColor.greenColor()
         siteNodes.addChild(node3)
         
@@ -106,7 +167,7 @@ class GameScene: SKScene {
             existing.removeFromParent()
         }
         else {
-            let node = SKShapeNode(circleOfRadius: 6)
+            let node = SKShapeNode(circleOfRadius: siteRadius)
             node.position = location
             node.fillColor = UIColor.greenColor()
             siteNodes.addChild(node)
@@ -133,6 +194,21 @@ class GameScene: SKScene {
                 }
                 node.strokeColor = UIColor.greenColor()
                 highlightNodes.addChild(node)
+                
+                
+                /*
+                let maxRect = cell.maximumInscribedRect
+                if maxRect.0 != CGRectZero {
+                    let rectnode = SKShapeNode()
+                    let rectpath = CGPathCreateMutable()
+                    maxRect.0.borders.forEach{
+                        CGPathMoveToPoint(rectpath, nil, $0.p0.x, $0.p0.y)
+                        CGPathAddLineToPoint(rectpath, nil, $0.p1.x, $0.p1.y)
+                        rectnode.path = rectpath
+                    }
+                    rectnode.strokeColor = UIColor.redColor()
+                    highlightNodes.addChild(rectnode)
+                }*/
             }
             
         }
@@ -140,15 +216,18 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+       updateScene()
+    }
+    
+    private func updateScene() {
         if needsEdgeUpdate {
             edgeNodes.removeAllChildren()
             highlightNodes.removeAllChildren()
             
             let points = siteNodes.children.map{ $0.position }
-
             let voronoi = Voronoi(points: points, boundary: bounds)
-            
             let edges = voronoi.voronoiEdges
+            
             edges.forEach{
                 let node = SKShapeNode()
                 let path = CGPathCreateMutable()
@@ -167,19 +246,63 @@ class GameScene: SKScene {
                 edgeNodes.addChild(vertex1)
             }
             
+            updateGrid(edges)
+            
             needsEdgeUpdate = false
         }
     }
     
-    let sideSize = 200
+    private func updateGrid(edges: [Line]) {
+        subdivisionNodes.removeAllChildren()
+        
+        let splitGrid = SplitGrid(rect: boundsFrame, depth: minScale)
+        splitGrid.subdivide(edges, finalDivide: true)
+        splitGrid.array.forEach{ rect in
+            let node = SKShapeNode(rect: rect)
+            
+            node.strokeColor = UIColor.cyanColor()
+            
+            subdivisionNodes.addChild(node)
+            
+            let intersects = edges.map{ rect.intersects($0) != nil }.reduce(false) {
+                (sum, next) in
+                return sum || next
+            }
+            
+            if intersects {
+                node.fillColor = UIColor.brownColor()
+            }
+        }
+    }
     
     func resetPoints() {
         siteNodes.removeAllChildren()
         edgeNodes.removeAllChildren()
         highlightNodes.removeAllChildren()
+        subdivisionNodes.removeAllChildren()
     }
     
     func setSelectMode(mode: SelectMode) {
         self.selectMode = mode
     }
 }
+
+
+extension ConvexPolygon {
+    var boundingBox: CGRect {
+        guard edges.count > 0 else { return CGRectZero }
+        
+        let xsort = edges.sort{ $0.p0.x < $1.p0.x }
+        let ysort = edges.sort{ $0.p0.y < $1.p0.y }
+        let xmin = xsort.first!.p0.x
+        let ymin = ysort.first!.p0.y
+        let xmax = xsort.last!.p0.x
+        let ymax = ysort.last!.p0.y
+        
+        return CGRect(x: xmin, y: ymin, width: xmax-xmin, height: ymax-ymin)
+    }
+
+}
+
+
+

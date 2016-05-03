@@ -18,6 +18,11 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var selectButton: UISegmentedControl!
     
+    @IBOutlet weak var slider: UISlider!
+    @IBAction func scaleSlider(sender: UISlider) {
+        scene.updateMinScale(sender.value)
+    }
+    
     @IBAction func selectAction(sender: AnyObject) {
         if selectButton.selectedSegmentIndex == 0 {
             scene.setSelectMode(.Site)
@@ -32,17 +37,25 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
+        print(skView.bounds.size)
         scene = GameScene(size: skView.bounds.size)
+        scene.scaleMode = .AspectFill
         
         skView.showsFPS = false
         skView.showsNodeCount = false
         
         skView.presentScene(scene)
-        
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
         
     }
 
