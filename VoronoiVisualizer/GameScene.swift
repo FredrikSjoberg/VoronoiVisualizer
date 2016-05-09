@@ -20,7 +20,6 @@ class GameScene: SKScene {
     var needsEdgeUpdate: Bool = false
     
     var subdivisionNodes: SKNode!
-    var grid: Grid!
     var boundsFrame: CGRect!
     var minScale: Int = 20
     func updateMinScale(scale: Float) {
@@ -78,27 +77,7 @@ class GameScene: SKScene {
         boundsNodes.strokeColor = UIColor.redColor()
         boundsNodes.path = path
         
-        subdivide(view.frame)
-    }
-    
-    func subdivide(bounds: CGRect) {
-        grid = Grid(bounds: bounds, count: 10)
-        boundsFrame = bounds
-//        subdivisionNodes = SKNode()
-//        grid.array.forEach{
-//            $0.forEach{
-//                let node = SKShapeNode()
-//                let polygon = ConvexPolygon(rect: $0)
-//                let path = CGPathCreateMutable()
-//                polygon.edges.forEach{
-//                    CGPathMoveToPoint(path, nil, $0.p0.x, $0.p0.y)
-//                    CGPathAddLineToPoint(path, nil, $0.p1.x, $0.p1.y)
-//                }
-//                node.strokeColor = UIColor.cyanColor()
-//                node.path = path
-//                subdivisionNodes.addChild(node)
-//            }
-//        }
+        boundsFrame = view.frame
     }
     
     func setupBoundsPolygon() {
@@ -255,9 +234,9 @@ class GameScene: SKScene {
     private func updateGrid(edges: [Line]) {
         subdivisionNodes.removeAllChildren()
         
-        let splitGrid = SplitGrid(rect: boundsFrame, depth: minScale)
-        splitGrid.subdivide(edges, finalDivide: true)
-        splitGrid.array.forEach{ rect in
+        let depth = CGFloat(minScale)
+        let splitGrid = boundsFrame.splitIntersect(edges, minSize: boundsFrame.size/depth, increaseDepth: true)
+        splitGrid.forEach{ rect in
             let node = SKShapeNode(rect: rect)
             
             node.strokeColor = UIColor.cyanColor()
